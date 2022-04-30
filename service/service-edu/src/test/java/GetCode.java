@@ -69,7 +69,6 @@ public class GetCode {
 
         mpg.setStrategy(strategy);
 
-
         // 6、执行
         mpg.execute();
     }
