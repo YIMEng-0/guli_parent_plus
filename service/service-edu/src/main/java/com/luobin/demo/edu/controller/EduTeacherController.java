@@ -1,6 +1,7 @@
 package com.luobin.demo.edu.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.luobin.common_utils.R;
 import com.luobin.demo.edu.entity.EduTeacher;
 import com.luobin.demo.edu.service.EduTeacherService;
@@ -11,6 +12,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.plaf.ListUI;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -88,4 +91,33 @@ public class EduTeacherController {
         }
     }
 
+    /**
+     * 分页查询讲师的列表
+     * @return 返回查询成功或者失败
+     *
+     * 将查询的参数在请求路径中进行传递
+     */
+    @ApiOperation("查询指定的页")
+    @GetMapping("pageTeacher/{current}/{limit}")
+    public R pageListTeacher(@PathVariable long current, @PathVariable long limit) {
+        // 创建 page 对象
+        // Page 里面传递的参数，1 标识当前页数 3 表示当前页的条数
+        Page<EduTeacher> pageTeacher = new Page<>(current, limit);
+
+        // 调用方法，实现分页功能
+        // pageTeacher 是翻页对象，后面是添加的条件，没有条件就写 null
+        // 调用方法的时候，将分页的数据封装到 pageTeacher 里面去，
+        teacherService.page(pageTeacher, null);
+
+        // 在上面将所有的数据封装到了 pageTeacher 里面去，下面把数据取出来
+        // 总记录数量
+        long total = pageTeacher.getTotal();
+        System.out.println("total: " + total);
+
+        // 数据 List 的集合 就是在每一个 页面中的数据个体的集合
+        List<EduTeacher> records = pageTeacher.getRecords();
+        System.out.println("records:" + records);
+
+        return R.ok().data("total", total).data("rows", records);
+    }
 }
