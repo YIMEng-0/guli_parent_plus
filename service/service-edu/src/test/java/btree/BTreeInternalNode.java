@@ -1,8 +1,10 @@
-package btree; /**
+package btree;
+/**
  * @author Doraemon
  * @date 2022/5/2 2:43 下午
  * @version 1.0
  */
+
 /**
  * Created by Kali on 14-5-26.
  */
@@ -133,7 +135,7 @@ class BTreeInternalNode<K extends Comparable<K>> extends AbstractBTreeNode<K> {
         }
 
         //key may exist in child
-        else{
+        else {
             int i = 0;
             //find proper child the key may exists in
             while (i < nkey) {
