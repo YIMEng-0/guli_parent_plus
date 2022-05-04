@@ -20,6 +20,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration // 配置类的注解
 @EnableSwagger2 // Swagger 注解的添加
 public class SwaggerConfig {
+    /**
+     * @Bean 将方法返回的对象放置到 Spring 容器中进行管理
+     * @return
+     */
     @Bean
     public Docket webApiConfig() {
         return new Docket(DocumentationType.SWAGGER_2) // 类型
@@ -36,8 +40,8 @@ public class SwaggerConfig {
                 .title("网站-课程中心API文档")
                 .description("本文档描述了课程中心微服务的接口定义")
                 .version("1.0")
-                .contact(new Contact("Helen", "http://atguigu.com",
-                        "55317332@qq.com"))
+                .contact(new Contact("LuoBin", "https://www.cugb.edu.cn",
+                        "12345678@qq.com"))
                 .build();
     }
 }

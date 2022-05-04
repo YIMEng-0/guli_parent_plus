@@ -16,5 +16,13 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+    <dependencies>
+        <!--为了使用全局下面的统一异常处理-->
+        <dependency>
+            <groupId>com.luobin</groupId>
+            <artifactId>common_utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -1,10 +1,8 @@
 package com.luobin.demo.edu.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,7 +28,7 @@ public class EduTeacher implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "讲师ID")
-    @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
     @ApiModelProperty(value = "讲师姓名")
@@ -55,9 +53,18 @@ public class EduTeacher implements Serializable {
     @TableLogic // 在 entity 上面添加 这个注解表示数据库的这个字段是逻辑删除的
     private Integer isDeleted;
 
+    /**
+     * 自动的填充这个属性 创建时间
+     */
     @ApiModelProperty(value = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
+    /**
+     * 在插入的时候，就进行一次修改，在修改的时候，这个字段也是需要改变的，修改时间
+     * 在第一次加入以及以后修改的时候，这个字段会自动的填充
+     */
     @ApiModelProperty(value = "更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 }

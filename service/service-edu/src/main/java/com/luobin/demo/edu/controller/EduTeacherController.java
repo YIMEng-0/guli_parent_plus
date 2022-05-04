@@ -1,19 +1,21 @@
 package com.luobin.demo.edu.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.luobin.common_utils.R;
 import com.luobin.demo.edu.entity.EduTeacher;
+import com.luobin.demo.edu.entity.vo.TeachQuery;
+import com.luobin.demo.edu.exceptionhandler.GuliException;
 import com.luobin.demo.edu.service.EduTeacherService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.plaf.ListUI;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -120,4 +122,129 @@ public class EduTeacherController {
 
         return R.ok().data("total", total).data("rows", records);
     }
+
+    /**
+     * example–举例说明
+     * @param current 当前页
+     * @param limit 当前页中包含的数据条数
+     * @param teachQuery 前端传递进行的查询条件
+     * @return 统一的返回结果
+     */
+    @ApiOperation("条件查询，数据按照分页返回")
+    @PostMapping("pageTeacherCondition/{current}/{limit}")
+    public R pageTeacherCondition(@PathVariable long current, @PathVariable long limit,
+                                  @RequestBody(required = false) TeachQuery teachQuery) {
+        /**
+         * @RequestBody 前面的请求按照 json 传递过来
+         * @Responsebody 后端把数据打包成为 json 传递到前端
+         *
+         * 使用了  @RequestBody 需要使用 Post 请求 ,否则后端无法查看到前端的数据
+         *
+         * @ApiOperation 这个注解在 swagger 里面对于整个后端访问接口的简单描述
+         */
+
+        // 创建 page 对象
+        Page<EduTeacher> pageTeacher = new Page<>(current, limit);
+
+        // 构建查询条件
+        QueryWrapper wrapper = new QueryWrapper();
+
+        /**
+         * 创建出来的 wrapper 里面将查询的条件进行封装，传递到底层进行查询
+         *
+         * 下面有使用到 动态 SQL ，条件不为空的话，将条件拼接进去即可
+         *
+         * wrapper 里面对于每个字段，的处理都设置相关的条件，然后拼接成为一个完整的动态 SQL 进行查询
+         */
+        // 将前端传递过来的将所有查询条件封装成为了一个对象里面的各个参数记性解析，看传递了什么参数过来
+        String name = teachQuery.getName();
+        Integer level = teachQuery.getLevel();
+        String begin = teachQuery.getBegin();
+        String end = teachQuery.getEnd();
+
+        if (!StringUtils.isEmpty(name)) {
+            wrapper.like("name", name);
+        }
+
+        if (!StringUtils.isEmpty(level)) {
+            wrapper.eq("level", level);
+        }
+
+        if (!StringUtils.isEmpty(begin)) {
+            wrapper.ge("gmt_creat", begin);
+        }
+
+        if (!StringUtils.isEmpty(end)) {
+            wrapper.le("gmt_creat", end);
+        }
+
+        teacherService.page(pageTeacher, wrapper);
+
+        // 在上面将所有的数据封装到了 pageTeacher 里面去，下面把数据取出来
+        long total = pageTeacher.getTotal();
+        System.out.println("total: " + total);
+
+        // 数据 List 的集合 就是在每一个 页面中的数据个体的集合
+        List<EduTeacher> records = pageTeacher.getRecords();
+        System.out.println("records:" + records);
+        return R.ok().data("total", total).data("rows", records);
+    }
+
+    /**
+     * 将前端需要传递的教师对象在这里进行传递
+     * 使用 json 的方式传递过来过来
+     * 因为使用了 json 的方式传递了，所以在这个地方使用的是 @RequestBody 注解
+     *
+     * @param eduTeacher
+     * @return
+     */
+    @ApiOperation("添加教师")
+    @PostMapping("addTeacher")
+    public R addTeacher(@RequestBody EduTeacher eduTeacher) {
+        boolean save = teacherService.save(eduTeacher);
+        if (save == true) {
+            return R.ok();
+        } else {
+            return R.error();
+        }
+    }
+
+    /**
+     * 修改讲师的信息
+     *  1、查询回显
+     *  2、将信息进行修改
+     */
+    @ApiOperation("根据 id 在修改前对讲师信息回显")
+    @GetMapping("getTeacher/{id}")
+    public R getTeacher(@PathVariable String id) {
+        EduTeacher eduTeacher = teacherService.getById(id);
+
+        // 在 ok 方法执行结束之后，进行连续调用，将数据按照对象的方法返回到前端
+        return R.ok().data("teacher", eduTeacher);
+    }
+
+    /**
+     * 将数据传递回来进行数据的修改， @RequestBody 与 @PostMapping 是放在一起使用的
+     *
+     * 没有一起使用的话，在参数的传递方面可能存在一定的问题
+     */
+    @ApiOperation("根据 id 修改讲师的内容")
+    @PostMapping("updateTeacher")
+    public R updateTeacher(@RequestBody EduTeacher eduTeacher) {
+        boolean flag = teacherService.updateById(eduTeacher);
+
+//        try {
+//            int i = 10 / 0;
+//        }catch (Exception e) {
+//            // 自行自定义异常
+//            throw new GuliException(20001, "执行了自定义定义异常");
+//        }
+
+        if (flag == true) {
+            return R.ok();
+        } else {
+            return R.error();
+        }
+    }
+
 }

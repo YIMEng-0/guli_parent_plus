@@ -6,7 +6,6 @@ package com.luobin.common_utils;
  * @version 1.0
  */
 
-
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -18,7 +17,7 @@ import java.util.Map;
  */
 
 /**
- *  创建了 get set hashCode equals toString
+ *  @Data 创建了 get set hashCode equals toString
  */
 @Data
 public class R {
