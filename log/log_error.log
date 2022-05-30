@@ -1,0 +1,4 @@
+2022-05-21 19:56:20.800 [http-nio-8001-exec-10] ERROR
+                c.l.d.edu.exceptionhandler.GlobalExceptionHandler - null
+2022-05-21 19:56:23.225 [http-nio-8001-exec-1] ERROR
+                c.l.d.edu.exceptionhandler.GlobalExceptionHandler - null

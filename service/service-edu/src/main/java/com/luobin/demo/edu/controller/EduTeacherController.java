@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.luobin.common_utils.R;
 import com.luobin.demo.edu.entity.EduTeacher;
 import com.luobin.demo.edu.entity.vo.TeachQuery;
-import com.luobin.demo.edu.exceptionhandler.GuliException;
+
 import com.luobin.demo.edu.service.EduTeacherService;
 
 import io.swagger.annotations.Api;
@@ -51,6 +51,7 @@ import java.util.List;
 @Api(description = "讲师管理")
 @RestController
 @RequestMapping("/edu/teacher")   // 前端访问的路径/
+@CrossOrigin
 public class EduTeacherController {
     /**
      * Controller 中注入 service ,调用相关的方法
@@ -96,7 +97,6 @@ public class EduTeacherController {
     /**
      * 分页查询讲师的列表
      * @return 返回查询成功或者失败
-     *
      * 将查询的参数在请求路径中进行传递
      */
     @ApiOperation("查询指定的页")
@@ -135,7 +135,7 @@ public class EduTeacherController {
     public R pageTeacherCondition(@PathVariable long current, @PathVariable long limit,
                                   @RequestBody(required = false) TeachQuery teachQuery) {
         /**
-         * @RequestBody 前面的请求按照 json 传递过来
+         * @RequestBody 前面的请求按照 json 传递过来 前端的请求封装成为 TeachQuery 对象 传递进来的
          * @Responsebody 后端把数据打包成为 json 传递到前端
          *
          * 使用了  @RequestBody 需要使用 Post 请求 ,否则后端无法查看到前端的数据
@@ -171,13 +171,14 @@ public class EduTeacherController {
         }
 
         if (!StringUtils.isEmpty(begin)) {
-            wrapper.ge("gmt_creat", begin);
+            wrapper.ge("gmt_create", begin);
         }
 
         if (!StringUtils.isEmpty(end)) {
-            wrapper.le("gmt_creat", end);
+            wrapper.le("gmt_create", end);
         }
 
+        wrapper.orderByDesc("gmt_create");
         teacherService.page(pageTeacher, wrapper);
 
         // 在上面将所有的数据封装到了 pageTeacher 里面去，下面把数据取出来
@@ -235,7 +236,7 @@ public class EduTeacherController {
 
 //        try {
 //            int i = 10 / 0;
-//        }catch (Exception e) {
+//        } catch (Exception e) {
 //            // 自行自定义异常
 //            throw new GuliException(20001, "执行了自定义定义异常");
 //        }
@@ -246,5 +247,4 @@ public class EduTeacherController {
             return R.error();
         }
     }
-
 }

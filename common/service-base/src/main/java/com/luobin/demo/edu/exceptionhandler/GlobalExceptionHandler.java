@@ -1,6 +1,7 @@
 package com.luobin.demo.edu.exceptionhandler;
 
 import com.luobin.common_utils.R;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author yimeng
  */
 @ControllerAdvice
+@Slf4j // 为了将日志信息添加到日志文件中
 public class GlobalExceptionHandler {
     /**
      * 全局异常处理
@@ -52,7 +54,7 @@ public class GlobalExceptionHandler {
     public com.luobin.common_utils.R error(GuliException e) {
         e.printStackTrace();
 
+        log.error(e.getMessage());
         return R.error().code(e.getCode()).message(e.getMsg());
     }
-
 }
