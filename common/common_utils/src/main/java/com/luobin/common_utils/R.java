@@ -41,6 +41,8 @@ public class R {
 
     /**
      * 返回的数据使用 Map 进行封装返回
+     *
+     * 返回到前端中的数据封装成为一个 Map 集合返回
      */
     private Map<String, Object> data = new HashMap<>();
 

@@ -5,6 +5,7 @@
     <modules>
         <module>service</module>
         <module>service/service-edu</module>
+        <module>service/service-oss</module>
         <module>common</module>
         <module>common/service-base</module>
         <module>common/common_utils</module>

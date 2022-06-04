@@ -32,9 +32,9 @@ public class EduLoginController {
 
     /**
      * 用户登录之后 信息的返回
+     *
      * @return
      */
-
     @GetMapping("info")
     public R info() {
 

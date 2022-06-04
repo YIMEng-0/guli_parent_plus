@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  * @date 2022/4/27 10:16 下午
  * @version 1.0
  */
-public class GetCode {
+public class CodeGenerator {
     public static void main(String[] args) {
         // 1、创建代码生成器
         AutoGenerator mpg = new AutoGenerator();
@@ -56,7 +56,7 @@ public class GetCode {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("edu_teacher");
+        strategy.setInclude("edu_subject");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
 
