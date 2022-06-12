@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @version 1.0
  */
 @Configuration
-@MapperScan("com.luobin.demo.edu.mapper") // 扫描 mybatis 的mapper 文件
+@MapperScan("com.luobin.demo.edu.mapper") // 扫描 mybatis 的 mapper 文件
 public class EduConfig {
 
     /**

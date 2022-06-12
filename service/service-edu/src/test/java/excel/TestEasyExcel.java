@@ -18,6 +18,7 @@ public class  TestEasyExcel {
         String filePath = "/Users/yimeng/Desktop/write.xlsx";
 
         // 调用 easyExcel 方法实现写操作
+        // 设置 sheet 的名字，写入的数据就是 getData() 得到的数据
         EasyExcel.write(filePath, DemoData.class).sheet("学生列表").doWrite(getData());
     }
 

@@ -63,7 +63,7 @@ public class EduTeacherController {
      * 查询表中的所有数据
      * rest 风格 在访问的时候，可以添加上去相关的访问方法
      * 浏览器访问的地址 ：http://localhost:8001/edu/teacher/findAll
-     * @return
+     * @return`
      */
     @ApiOperation(value = "所有讲师列表")
     @GetMapping("findAll")

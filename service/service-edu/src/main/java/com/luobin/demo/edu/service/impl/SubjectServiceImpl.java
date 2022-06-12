@@ -20,6 +20,7 @@ public class SubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubject
     /**
      * 添加课程分类
      * 获取上传来的文件，将文件内容读取出来
+     * 前端上传的 Excel 内容读取里面的内容
      * @param file
      */
     @Override
