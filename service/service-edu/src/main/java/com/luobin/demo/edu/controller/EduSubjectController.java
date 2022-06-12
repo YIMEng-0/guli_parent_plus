@@ -34,7 +34,7 @@ public class EduSubjectController {
      */
     @PostMapping("addSubject")
     public R addSubject(MultipartFile file) { // 得到上传的文件
-        eduSubjectService.saveSubject(file);
+        eduSubjectService.saveSubject(file, eduSubjectService);
 
         return R.ok();
     }
