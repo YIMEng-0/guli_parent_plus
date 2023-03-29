@@ -37,8 +37,5 @@ public class SubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubject
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 }

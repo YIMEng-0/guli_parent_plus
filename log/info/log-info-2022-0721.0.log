@@ -1,56 +1,50 @@
-2023-03-22 16:48:39.640 [main] INFO 
-                com.luobin.demo.edu.EduApplication - Starting EduApplication on MacBook-Pro.local with PID 11566 (/Users/yimeng/Documents/programming/guli/guli_parent/service/service-edu/target/classes started by yimeng in /Users/yimeng/Documents/programming/guli/guli_parent)
-2023-03-22 16:48:39.642 [main] INFO 
+2022-07-21 14:53:34.399 [main] INFO 
+                com.luobin.demo.edu.EduApplication - Starting EduApplication on MacBook-Pro.local with PID 12000 (/Users/yimeng/Documents/programming/guli/guli_parent/service/service-edu/target/classes started by yimeng in /Users/yimeng/Documents/programming/guli/guli_parent)
+2022-07-21 14:53:34.402 [main] INFO 
                 com.luobin.demo.edu.EduApplication - The following profiles are active: dev
-2023-03-22 16:48:40.085 [main] INFO 
+2022-07-21 14:53:34.783 [main] INFO 
                 o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2023-03-22 16:48:40.086 [main] INFO 
+2022-07-21 14:53:34.784 [main] INFO 
                 o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2023-03-22 16:48:40.100 [main] INFO 
-                o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6ms. Found 0 repository interfaces.
-2023-03-22 16:48:40.240 [main] INFO 
+2022-07-21 14:53:34.792 [main] INFO 
+                o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4ms. Found 0 repository interfaces.
+2022-07-21 14:53:34.902 [main] INFO 
                 o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-03-22 16:48:40.374 [main] INFO 
+2022-07-21 14:53:35.001 [main] INFO 
                 o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8001 (http)
-2023-03-22 16:48:40.380 [main] INFO 
+2022-07-21 14:53:35.007 [main] INFO 
                 org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8001"]
-2023-03-22 16:48:40.380 [main] INFO 
+2022-07-21 14:53:35.008 [main] INFO 
                 org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2023-03-22 16:48:40.381 [main] INFO 
+2022-07-21 14:53:35.008 [main] INFO 
                 org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
-2023-03-22 16:48:40.420 [main] INFO 
+2022-07-21 14:53:35.046 [main] INFO 
                 o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-03-22 16:48:40.420 [main] INFO 
-                org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 758 ms
-2023-03-22 16:48:40.513 [main] INFO 
+2022-07-21 14:53:35.046 [main] INFO 
+                org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 618 ms
+2022-07-21 14:53:35.142 [main] INFO 
                 com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-03-22 16:48:40.778 [main] INFO 
+2022-07-21 14:53:35.530 [main] INFO 
                 com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-03-22 16:48:41.008 [main] INFO 
+2022-07-21 14:53:35.746 [main] INFO 
                 s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2023-03-22 16:48:41.057 [main] INFO 
+2022-07-21 14:53:35.794 [main] INFO 
                 o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2023-03-22 16:48:41.278 [main] INFO 
+2022-07-21 14:53:35.997 [main] INFO 
                 s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
-2023-03-22 16:48:41.285 [main] INFO 
+2022-07-21 14:53:36.006 [main] INFO 
                 s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2023-03-22 16:48:41.298 [main] INFO 
+2022-07-21 14:53:36.019 [main] INFO 
                 s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2023-03-22 16:48:41.373 [main] INFO 
+2022-07-21 14:53:36.092 [main] INFO 
                 org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8001"]
-2023-03-22 16:48:41.386 [main] INFO 
+2022-07-21 14:53:36.103 [main] INFO 
                 o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8001 (http) with context path ''
-2023-03-22 16:48:41.388 [main] INFO 
-                com.luobin.demo.edu.EduApplication - Started EduApplication in 2.006 seconds (JVM running for 2.488)
-2023-03-22 16:48:54.281 [http-nio-8001-exec-1] INFO 
-                o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-03-22 16:48:54.281 [http-nio-8001-exec-1] INFO 
-                org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2023-03-22 16:48:54.285 [http-nio-8001-exec-1] INFO 
-                org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
-2023-03-22 16:49:07.351 [SpringContextShutdownHook] INFO 
+2022-07-21 14:53:36.104 [main] INFO 
+                com.luobin.demo.edu.EduApplication - Started EduApplication in 1.974 seconds (JVM running for 2.21)
+2022-07-21 14:55:21.749 [SpringContextShutdownHook] INFO 
                 o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-2023-03-22 16:49:07.352 [SpringContextShutdownHook] INFO 
+2022-07-21 14:55:21.751 [SpringContextShutdownHook] INFO 
                 com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-03-22 16:49:07.356 [SpringContextShutdownHook] INFO 
+2022-07-21 14:55:21.758 [SpringContextShutdownHook] INFO 
                 com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
